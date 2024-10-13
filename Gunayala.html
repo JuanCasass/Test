@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te amo, Gunayala</title>
+<style>
+body {
+background-color: #ffcccb;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+flex-direction: column;
+font-family: 'Arial', sans-serif;
+color: #ff69b4;
+text-align: center;
+overflow: hidden;
+}
+
+h1 {
+font-size: 3em;
+margin-bottom: 20px;
+}
+
+button {
+padding: 10px 20px;
+font-size: 1.5em;
+color: #fff;
+background-color: #e75480;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: #c74375;
+}
+
+.rose {
+position: absolute;
+width: 50px;
+height: 50px;
+background: url('https://img.freepik.com/free-vector/red-rose-flower_43623-936.jpg?t=st=1728792577~exp=1728796177~hmac=8101486f1105a37290d73dbfbd7c3442112737d9422d26a1ee9da7a7eba29d4e&w=1060') no-repeat center;
+background-size: cover;
+animation: fall linear infinite;
+z-index: 0;
+}
+
+@keyframes fall {
+0% {
+transform: translateY(-100px);
+opacity: 1;
+}
+100% {
+transform: translateY(100vh);
+opacity: 0;
+}
+}
+</style>
+</head>
+<body>
+<h1>Te amo, Gunayala</h1>
+<button id="surpriseButton">Clic para sorpresa</button>
+
+<script>
+function createRose() {
+const rose = document.createElement('div');
+rose.classList.add('rose');
+rose.style.left = Math.random() * 100 + 'vw';
+rose.style.animationDuration = Math.random() * 2 + 3 + 's';
+document.body.appendChild(rose);
+
+setTimeout(() => {
+rose.remove();
+}, 5000);
+}
+
+function fillWithRoses() {
+for (let i = 0; i < 100; i++) {
+setTimeout(createRose, i * 100);
+}
+}
+
+// Ajuste para que funcione en dispositivos móviles
+document.getElementById("surpriseButton").addEventListener("click", fillWithRoses);
+document.getElementById("surpriseButton").addEventListener("touchstart", fillWithRoses);
+</script>
+</body>
+</html>
